@@ -1,0 +1,82 @@
+/* global css for all html pages */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+}
+
+.diary-header {
+    background: #222;
+    color: #fff;
+    padding: 1.5rem 2rem;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.card {
+    flex: 1 1 200px;
+    max-width: 250px;
+    height: 150px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.form {
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: sans-serif;
+}
+
+label {
+    font-weight: bold;
+    font-size: larger;
+}
+
+input, textarea {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-family: inherit;
+}
+textarea {
+    resize: vertical;
+    min-height: 1000px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+button {
+
+    background: #333;
+    padding: 10px;
+    color: #fff;
+    
+    
+    
+    border: none;
+    cursor: pointer;
+
+}
+   
