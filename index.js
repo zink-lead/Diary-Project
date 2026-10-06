@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
     // Placeholder if card is empty
     if (!entry) {
-        if (i === 0) card.textContent = 'No diary entries yet.';
+        if (i === 0) card.textContent = 'So much space';
         return;
     }
  

@@ -14,7 +14,8 @@ form.addEventListener('submit',(event)=> {
 //new aray for saved diary entries
 const entries = JSON.parse(localStorage.getItem('entries')) || [];
 
-// --- new-entry page ---
+// new-entry page 
+
 
 
 if (form) {
@@ -37,7 +38,7 @@ if (form) {
 
 }
 
-// --- vault page ---
+// vault page
 
 const entryList = document.querySelector('.entry-list');
 if (entryList) {
