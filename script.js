@@ -11,15 +11,52 @@ form.addEventListener('submit',(event)=> {
     console.log('Entry', descriptionInput.value);
 });
 
+//new aray for saved diary entries
 const entries = JSON.parse(localStorage.getItem('entries')) || [];
 
-//const form = document.getElementById('entryForm');
+// --- new-entry page ---
 
-const entry = {
-    title: document.getElementById('Title'),
-    description: document.getElementById('description'),
-};
 
-entries.push(entry);
+if (form) {
 
-localStorage.setItem('entries', JSON.stringify(entries));
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const entry = {
+      title: document.querySelector('#title').value,
+
+      description: document.querySelector('#description').value,
+
+      date: new Date().toISOString(),
+    };
+
+    entries.push(entry);
+    localStorage.setItem('entries', JSON.stringify(entries));
+    console.log('Saved', entry);
+    form.reset();
+  });
+
+}
+
+// --- vault page ---
+
+const entryList = document.querySelector('.entry-list');
+if (entryList) {
+    entries.forEach((entry) => {
+        const div = document.createElement('div');
+        div.className = 'entry';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = entry.title;
+
+        const p = document.createElement('p');
+        p.textContent = entry.description;
+        div.append(h2, p);
+
+    entryList.appendChild(div);
+
+  });
+
+}
+
+
+ 

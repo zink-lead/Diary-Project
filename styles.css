@@ -94,6 +94,9 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-family: 'Cavaet', cursive;
+    color: #2f4a5a;
+
 }
 
 .form {
