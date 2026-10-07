@@ -96,6 +96,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     font-family: 'Cavaet', cursive;
     color: #2f4a5a;
+    overflow: hidden;
 
 }
 
@@ -144,15 +145,28 @@ button {
 
 .entry-list {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;   /* each oval keeps its own height */
+    justify-content: center;
+    
+
   }
 
   .entry {
-    width: 100%;
-    padding: 4rem;
+    width: fit-content;        /* shrink-wraps to the text */
+    max-width: 22em;           /* long entries wrap instead of stretching */
+    padding: 1.5em 2.8em;      /* extra room so text stays inside the curve */
+    border-radius: 50%;        /* oval */
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    line-height: 1.4;
+    overflow-wrap: anywhere;   /* long words break rather than poke out */
+    box-sizing: border-box;
+    font-family: 'Cavaet', cursive;
+    color: #2f4a5a
+
   }
    
