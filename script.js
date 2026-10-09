@@ -1,8 +1,6 @@
-// ---------- shared helpers ----------
+// shared helpers
 
 const getEntries = () => JSON.parse(localStorage.getItem('entries')) || [];
-
- 
 
 function formatDate(iso) {
 
@@ -40,43 +38,77 @@ function buildEntryContent(entry) {
 
  
 
-// ---------- new-entry page ----------
+// new-entry page
+
 
 const form = document.querySelector('#entryForm');
 
-if (form) {
+const feedback = document.querySelector('#feedback');
 
-  form.addEventListener('submit', (event) => {
+let hideTimer;
 
-    event.preventDefault();
-
- 
-
-    const entries = getEntries();
-
-    entries.push({
-
-      title: document.querySelector('#title').value,
-
-      description: document.querySelector('#description').value,
-
-      date: new Date().toISOString(),
-
-    });
+function showFeedback(message, isError = false) {
+  
+  feedback.textContent = message;
+  
+  feedback.classList.toggle('error', isError);
+  
+  feedback.classList.add('show');
+  
+  clearTimeout(hideTimer);
+  
+  hideTimer = setTimeout(() => feedback.classList.remove('show'), 2500);
+    }
 
  
+    if (form) {
+    
+    form.addEventListener('submit', (event) => {
+    
+      event.preventDefault();
 
-    localStorage.setItem('entries', JSON.stringify(entries));
 
-    form.reset();
+//added to stop empy entries, trim also stops an empty entry of just spaces to be entered, access my showFeedback function above with a new message 
 
+const title = document.querySelector('#title').value.trim();
+
+const description = document.querySelector('#description').value.trim();
+
+    if (!title || !description) {
+      
+      showFeedback('Please fill in both fields', true);
+      
+      return;
+    }
+
+    try {
+      
+      const entries = getEntries();
+
+      entries.push({
+        
+        title: document.querySelector('#title').value,
+        
+        description: document.querySelector('#description').value,
+        
+        date: new Date().toISOString(),
+      });
+
+      localStorage.setItem('entries', JSON.stringify(entries));
+      
+      form.reset();
+      
+      showFeedback('Entry saved ✓');
+    
+    } catch (err) {
+      
+      showFeedback('Could not save entry', true);
+    }
   });
-
 }
-
  
 
-// ---------- vault page ----------
+// vault page
 
 const vault = document.querySelector('.entry-list');
 
@@ -110,7 +142,7 @@ if (vault) {
 
  
 
-// ---------- index page ----------
+// index page 
 
 const cards = document.querySelectorAll('.card');
 

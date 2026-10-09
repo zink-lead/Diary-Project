@@ -5,56 +5,31 @@
   padding: 0;
 }
 
+/* Nav bar editied to work across different screen sizes */
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: transparent;
+  padding: 1rem 1.5rem;
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  justify-content: flex-end;   
+  flex-wrap: wrap;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
+  display: inline-block;
+  padding: 0.5rem 0;          
   color: #333;
   text-decoration: none;
-  font-size: 0.95rem;
   font-weight: 500;
-  transition: color 0.2s ease;
-  position: relative;
 }
 
 .nav-links a:hover {
-  color: #000;
-}
-
-/* hover animation */
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1.5px;
-  background: currentColor;
-  transition: width 0.2s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+  text-decoration: underline;
 }
 
 h1 {
@@ -94,11 +69,13 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    font-family: 'Cavaet', cursive;
+    font-family: 'Caveat', cursive;
     color: #2f4a5a;
     overflow: hidden;
 
 }
+
+/* Diary entry form*/
 
 .form {
     max-width: 800px;
@@ -123,7 +100,7 @@ input, textarea {
 }
 textarea {
     resize: vertical;
-    min-height: 1000px;
+    min-height: 300px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
@@ -133,13 +110,33 @@ button {
     background: #333;
     padding: 10px;
     color: #fff;
-    
-    
-    
     border: none;
     cursor: pointer;
-
 }
+
+/*css for the entry saved on button click, .feedback shows nothing, on button click feedback.show reveals the message*/
+.feedback {
+    margin: 0;
+    padding: 10px 14px;
+    background: #d1fae5;
+    color: #065f46;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+}
+
+.feedback.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 
 /*vault styles full width row layout*/
 
@@ -147,26 +144,26 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    align-items: flex-start;   /* each oval keeps its own height */
+    align-items: flex-start;   
     justify-content: center;
     
 
   }
 
   .entry {
-    width: fit-content;        /* shrink-wraps to the text */
-    max-width: 22em;           /* long entries wrap instead of stretching */
-    padding: 1.5em 2.8em;      /* extra room so text stays inside the curve */
-    border-radius: 50%;        /* oval */
+    width: fit-content;        
+    max-width: 22em;           
+    padding: 1.5em 2.8em;      
+    border-radius: 50%;        
     background: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     text-align: center;
     line-height: 1.4;
-    overflow-wrap: anywhere;   /* long words break rather than poke out */
+    overflow-wrap: anywhere;   
     box-sizing: border-box;
-    font-family: 'Cavaet', cursive;
-    color: #2f4a5a
+    font-family: 'Caveat', cursive;
+    color: #2f4a5a;
 
   }
    
